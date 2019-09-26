@@ -33,6 +33,3 @@ print(map_[0][1])
 p_start = point(None,0,0,0)
 open_list.append
 print('\n '+ str(point_B))
-
-
-    
