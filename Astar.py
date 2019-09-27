@@ -55,14 +55,16 @@ try:
              line_split = line.replace('\n','').split(" ")
              point_list = list()
              j = 0
-             #print(line_split)
              for l in line_split:
                 
                 point_ = point(None,0,0,i,j,l)
                 if(point_.content == 'B'):
                      point_B = point_
-                if(point_.content == 'A'):
+                elif(point_.content == 'A'):
                      point_A = point_
+                elif(point_.content != '1' and point_.content != '0'):
+                    print('The '+point_.content+' is invalid character in map, please check it. The only permited character are A, B, 0 and 1')
+                    sys.exit()
                 print(point_.content+' ',end='')
                 point_list.append(point_)
                 j= j+1
@@ -81,7 +83,6 @@ if(point_B is None):
     sys.exit()
 
 
-print(point_A.content+ "f")
 open_list.append(point_A)
 while (len(open_list)>0):
     open_list.sort(key=lambda p: p.g+p.h)
@@ -93,15 +94,14 @@ while (len(open_list)>0):
     closed_list.append(p)
     children_valid = find_children_valid(p)
     content = [[p.i,p.j] for p in children_valid]
-    print(content)
     for child in children_valid:
         child.before_point = p
         child.g = p.g +1
         child.h = dist_manhattan(child.j,child.i,point_B.j,point_B.i)
         open_list.append(child)
 if(point_B.before_point is not None):
-    print(point_B.before_point.i,point_B.before_point.j,point_B.i,point_B.j)
     path = find_way()
+    path.reverse()
     print(path)
     
 else:
