@@ -90,6 +90,9 @@ while (len(open_list)>0):
         child.g = p.g +1
         child.h = dist_manhattan(child.j,child.i,point_B.j,point_B.i)
         open_list.append(child)
-
-path = find_way()
-print(path)
+print(point_B.i,point_B.j)
+if(point_B.before_point is not None):
+    path = find_way()
+    print(path)
+else:
+    print('There is no path to point B')
