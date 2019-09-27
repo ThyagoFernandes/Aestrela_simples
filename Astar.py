@@ -29,7 +29,6 @@ def isgoal(j_point,i_point,j_goal,i_goal):
 def find_children_valid(p):
     children_base = [[0,1],[1,0],[0,-1],[-1,0]]
     children_valid = list()
-    print(p.i,p.j)
     for child in children_base :
         try:
             if(p.i+child[0] >= 0 and p.j+ child[1]>= 0):
@@ -87,9 +86,8 @@ open_list.append(point_A)
 while (len(open_list)>0):
     open_list.sort(key=lambda p: p.g+p.h)
     p = open_list[0]
-    content = [[p.h+p.g,p.content] for p  in open_list]
+    content = [[p.h+p.g,p.content] for p  in closed_list]
     open_list.pop(0)
-
         
     closed_list.append(p)
     children_valid = find_children_valid(p)
@@ -98,7 +96,8 @@ while (len(open_list)>0):
         child.before_point = p
         child.g = p.g +1
         child.h = dist_manhattan(child.j,child.i,point_B.j,point_B.i)
-        open_list.append(child)
+        if(child not in open_list):
+            open_list.append(child)
 if(point_B.before_point is not None):
     path = find_way()
     path.reverse()
