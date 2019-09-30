@@ -11,4 +11,4 @@ Ou caso exista uma versão python 2.x e outra seja 3.x:
 ```python
 python3 Astar.py <Arquivo_do_mapa>
 ```
-O arquivo do mapa deve ser ter apenas os caracteres 0, 1, A e B. Esse caracteres devem ser separados em coluna por espaço e em linha por quebra de linha (\n).
+O arquivo do mapa deve ser ter apenas os caracteres 0, 1, A e B. Esse caracteres devem ser separados em coluna por espaço e em linha por quebra de linha (\n) e o grid precisa ser n x n.
